@@ -1,0 +1,22 @@
+<mat-card>
+        <form [formGroup]="form" (ngSubmit)="onSavePost()">
+            <mat-form-field >
+                <mat-label>Card  Type</mat-label>
+                <mat-select matSelect formControlName="type">
+                  <mat-option matOption *ngFor="let cardtype of cardtypes" [value]="cardtype.value">
+                    {{cardtype.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('type').invalid" >Please enter the card type</mat-error>
+              </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" formControlName="amount" placeholder="amount"   name="type" >
+            <mat-error *ngIf="form.get('amount').invalid" >Please enter the card amount</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput rows="6" formControlName="description" placeholder="description"   name="description" ></textarea>
+            <mat-error *ngIf="form.get('description').invalid" >Please enter the card description</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit">Save Post</button>
+    </form>
+</mat-card>
